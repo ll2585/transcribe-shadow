@@ -1,0 +1,203 @@
+
+.noble{
+    width: 75px;
+    height: 105px;
+    outline: black solid thin;
+    background-color: #ffffff;
+}
+
+.noble > .top{
+    height:25%;
+    outline: black solid thin;
+    position: relative;
+}
+.noble > .top > .noble-label{
+    font-size: large;
+    color: #ffffff;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    left: 5px;
+    width: 25%;
+}
+.noble > .top > .points{
+    font-size: large;
+    color: #ffffff;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    right: 5px;
+    width: 25%;
+
+    display: inline-block;
+    position:absolute;
+}
+
+.gem{
+    display: inline-block;
+    width: 75px; /*TODO: MAKE THIS DYNAMIC */
+}
+.gem > .color{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+.gem-count{
+    display: inline-block;
+    width: 100%;
+    font-size: smaller;
+}
+.gem-count-label{
+    display: inline;
+}
+.gem-change{
+    display: inline;
+}
+.gem-change-increase{
+    color: green;
+}
+.gem-change-decrease{
+    color: red;
+}
+.card .red, .gem .red, .noble .red, .modal > .row .red  {
+    background: url(../../images/games/splendor/red.svg);
+    background-size: 100% 100%;
+}
+.card .blue, .gem .blue, .noble .blue, .modal > .row .blue  {
+    background: url(../../images/games/splendor/blue.svg);
+    background-size: 100% 100%;
+}
+.card .black, .gem .black, .noble .black, .modal > .row .black  {
+    background: url(../../images/games/splendor/black.svg);
+    background-size: 100% 100%;
+}
+.card .white, .gem .white , .noble .white, .modal > .row .white {
+    background: url(../../images/games/splendor/white.svg);
+    background-size: 100% 100%;
+}
+.card .green, .gem .green, .noble .green, .modal > .row .green  {
+    background: url(../../images/games/splendor/green.svg);
+    background-size: 100% 100%;
+}
+.gems{
+    position: relative;
+}
+.gem .gold, .modal > .row .gold  {
+    background: url(../../images/games/splendor/gold.svg);
+    background-size: 100% 100%;
+}
+
+.noble > .bottom > .requirements > .requirement{
+    left: 2px;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+.noble > .bottom > .requirements > .requirement > .requirement-amt{
+    height: 100%;
+    width: 16px; /* TODO: make this responsive eventually */
+    display: inline;
+}
+.noble > .bottom > .requirements > .requirement > .color{
+    height: 100%;
+    display: inline;
+    border: 1px solid;
+}
+.noble > .bottom {
+    height:75%;
+    position: relative;
+}
+.noble > .bottom > .requirements{
+    position: absolute;
+    display: inline-block;
+    bottom:0;
+    left: 5px;
+}
+
+
+#you{
+    display:inline-block;
+}
+#bob{
+    display:inline-block;
+}
+#alice{
+    display:inline-block;
+}
+#board{
+    position:relative;
+    clear:both;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.player-block{
+    height:400px;/*TODO: make this responsive */
+}
+
+.selected{
+    background-color: lightgray;
+}
+
+.image-and-stats{
+    float:left;
+}
+
+.image-and-stats > .reserved-cards {
+    height: 0px;
+}
+
+.nobles-and-cards{
+    float:right;
+}
+
+.nobles-and-cards > .nobles {
+    position:relative;
+}
+
+.nobles-and-cards > .nobles > .noble-container{
+    display: inline-block;
+    position:relative;
+}
+
+#nobles{
+    border: 1px solid;
+    margin-bottom: 30px;
+}
+.deck-label{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -15%;
+    
+}
+/* overlay styles, all needed */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* just some content with arbitrary styles for explanation purposes */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px; /*TODO: make this responsive */
+    margin-left: -150px; /*TODO: make this responsive */
+    background-color: #f1c40f;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+    display: inline-block;
+    height: 50%;
+    width: 50%;
+}

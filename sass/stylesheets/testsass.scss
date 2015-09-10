@@ -1,0 +1,196 @@
+// start content
+$defaultCardHeight: 105px;
+$cardRatio: (75px/105px);
+$defaultCardWidth: $cardRatio * $defaultCardHeight;
+$bottomRatio : 75%;
+$laptopScale: .75;
+$tabletScale: .5;
+$phoneScale: .33;
+
+
+@mixin media($queryString){
+  @media #{$queryString} {
+    @content;
+  }
+}
+
+$desktop-width: 1440px;
+$laptop-width: 1180px;
+$tablet-width: 768px;
+
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+.card {
+  @include desktop{
+    height: $defaultCardHeight;
+    width: $defaultCardWidth;
+  }
+  @include laptop{
+    height: $defaultCardHeight * $laptopScale;
+    width: $defaultCardWidth * $laptopScale;
+  }
+  @include tablet{
+    height: $defaultCardHeight * $tabletScale;
+    width: $defaultCardWidth * $tabletScale;
+  }
+  @include phone{
+    height: $defaultCardHeight * $phoneScale;
+    width: $defaultCardWidth * $phoneScale;
+  }
+  outline: black solid thin;
+  background-color: #ffffff;
+  > .top{
+    height:25%;
+    outline: black solid thin;
+    position: relative;
+    > .points {
+      @include desktop{
+        font-size: large;
+      }
+      @include laptop{
+        font-size: medium;
+      }
+      @include tablet{
+        font-size: small;
+      }
+      @include phone{
+        font-size: smaller;
+      }
+      color: #000000;
+      left: percentage(5px/$defaultCardWidth);
+      width: 25%;
+      top: 10%;
+      display: inline-block;
+      position: absolute;
+    }
+    > .color{
+      display: inline-block;
+      float:right;
+      right: percentage(10px/$defaultCardWidth);
+      top: 10%;
+      height: 80%;
+      width: 28%;
+      position:absolute;
+    }
+  }
+  > .bottom {
+    height:$bottomRatio;
+    position: relative;
+    > .costs{
+      position: absolute;
+      display: inline-block;
+      bottom:0;
+      padding-left: percentage(5px/$defaultCardWidth);
+      > .cost{
+        left: percentage(2px/$defaultCardWidth);
+        height: 100%;
+        @include desktop{
+          width: 100%;
+        }
+        @include laptop{
+          float:left;
+          padding-right: 3px;
+        }
+        display: inline-block;
+        > .cost-amt{
+          height: 100%;
+          width: 16px; /* TODO: make this responsive eventually */
+          display: inline;
+        }
+        > .color{
+          @include desktop{
+            height: .75* $defaultCardWidth / 4;
+          }
+          @include laptop{
+            height: .75* $defaultCardWidth / 4 * $laptopScale;
+          }
+          @include tablet{
+            height: .75* $defaultCardWidth / 4 * $tabletScale;
+          }
+          @include phone{
+            height: .75* $defaultCardWidth / 4 * $phoneScale;
+          }
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+@mixin cards-in-line {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+@mixin cards-in-line-parent {
+  position:relative;
+  margin: 0 auto;
+  width:100%;
+}
+
+#level3-cards, #level2-cards, #level1-cards{
+  > .card {
+    @include cards-in-line
+  }
+  @include cards-in-line-parent
+}
+
+#nobles-cards{
+  > .noble {
+    @include cards-in-line
+  }
+  @include cards-in-line-parent
+}
+
+.scoreboard{
+  display:block;
+  border: 1px solid black;
+  float:right;
+  @include desktop{
+    width: $defaultCardWidth * 5;
+  }
+  @include laptop{
+    width: $defaultCardWidth * $laptopScale * 5;
+  }
+  @include tablet{
+    width: $defaultCardWidth * $tabletScale * 5;
+  }
+  @include phone{
+    width: $defaultCardWidth * $phoneScale * 5;
+  }
+  height: 130px; /* TODO: make this responsive */
+}
+.scoreboard > .color-category > .deck > .card-container{
+  margin-top: -78.75px; /* TODO: make this responsive */
+  position:relative;
+}
+.scoreboard > .color-category{
+  display: inline-block;
+  width: 20%;
+}
+.scoreboard > .color-category > .deck{
+  margin-top: 78.75px; /* TODO: make this responsive */
+}
