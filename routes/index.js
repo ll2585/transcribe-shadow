@@ -6,5 +6,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../public', 'main.html'));
 });
+router.get('/flashcards', function(req, res, next) {
+    res.sendFile(path.join(__dirname, '../public', 'flashcards.html'));
+});
 
 module.exports = router;

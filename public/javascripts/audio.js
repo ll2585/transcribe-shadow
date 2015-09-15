@@ -85,12 +85,12 @@ function CSVToArray( strData, strDelimiter ){
     return( arrData );
 }
 
-var audioApp = angular.module('audioApp', []).directive('audios', function($sce) {
+var audioApp = angular.module('audioApp', ['ui.event']).directive('audios', function($sce) {
     return {
         restrict: 'A',
         scope: { code:'=' },
         replace: true,
-        template: '<audio ng-src="{{url}}" controls></audio>',
+        template: '<audio ng-src="{{url}}" controls ui-event="{ended : &apos;end()&apos;}"></audio>',
         link: function (scope) {
             scope.$watch('code', function (newVal, oldVal) {
                 if (newVal !== undefined) {
@@ -152,6 +152,8 @@ audioApp.controller('MainCtrl', ['$scope', '$http', function($scope, $http){
             $scope.audios[mp3_text] = $scope.lines[i][3];
             $scope.event['audios'].push(mp3_text);
         }
+
+
     });
 
     $scope.speed = 100;
@@ -161,10 +163,12 @@ audioApp.controller('MainCtrl', ['$scope', '$http', function($scope, $http){
             var vid = document.getElementById(s);
             vid.playbackRate = speed/100;
         }
+    };
 
+
+
+    $scope.end = function() {
+        console.log("OKL")
     }
-
-
-
 
 }]);
